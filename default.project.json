@@ -1,0 +1,13 @@
+{
+  "name": "RPM",
+  "tree": {
+    "$className": "DataModel",
+
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "RPM": {
+        "$path": "src/MainModule"
+      }
+    }
+  }
+}
