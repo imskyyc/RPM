@@ -154,10 +154,12 @@ Server.Load = function()
 
     debug.output("Checking for existing RPM instance...")
     if _G.RPM and Config.framework.prevent_multiple_instances then
-        return error("RPM is already running! Location:" .. _G.RPM);
+        return error("RPM is already running! Aborting load process.");
     else
         _G.RPM = true
     end
+
+    debug.output("Loading cores...")
 
     for _, Core in pairs(Core:GetChildren()) do --// Register the core parts of the framework
         local CoreObject = require(Core)
@@ -177,6 +179,8 @@ Server.Load = function()
             debug.output("Core: " .. Core.Name .. " loaded.")
         end
     end
+    
+    debug.output("Cores loaded successfully.")
 
     debug.output("Destroying Core Folder...")
     Core:Destroy() --// Delete unused instances for optimization.

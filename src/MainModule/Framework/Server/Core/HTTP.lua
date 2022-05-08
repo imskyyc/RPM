@@ -44,7 +44,39 @@ local self; self = Core.new("HTTP", {
         debug = Environment.debug
 
         --// TODO: HTTP stuff, will come in later update
-    end
+    end,
+
+    Request = function(URL: string, Method: string, Headers: Dictionary<string>, Body: Dictionary<string>, Decode: boolean): Dictionary<string>
+        local HttpService: HttpService = Service.HttpService
+
+        local Request = {
+            Url     = URL,
+            Method  = Method,
+            Headers = Headers,
+            Body    = if Method ~= "GET" and Method ~= "HEAD" then Body else nil
+        }
+
+        local Success, Response = PCall(HttpService.RequestAsync, false, HttpService, Request)
+
+        if Success then
+            if Decode then
+                local Body = Response.body
+                local Decoded, JSON = PCall(HttpService.JSONDecode, false, HttpService, Body)
+
+                if Decoded and JSON then
+                    return JSON
+                else
+                    return {}
+                end
+            else
+                return Response
+            end
+        end
+    end,
+
+    Logging = {
+        
+    }
 })
 
 return self;
