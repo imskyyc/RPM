@@ -1,6 +1,9 @@
 return {
     framework = { --// Framework behavior configuration
-        debug = false, --// Determines if extra debug info will be printed to the console
+        debug = true, --// Determines if extra debug info will be printed to the console
+
+        prevent_multiple_instances = true, --// Determines if RPM will fail to load if a different version of the framework is
+                                           --// Already running
 
         error_handling = {
             output_to_console = true, --// Determines if errors will be output to the console

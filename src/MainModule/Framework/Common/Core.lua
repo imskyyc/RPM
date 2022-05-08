@@ -28,7 +28,7 @@ end
 
 function Core:LoadCore()
 	if self.Load then
-		self.Load()
+		self.Load(self:GetEnvironment())
         self.Load = nil
     else
         warn(self.Name .. ": Core already loaded.")
