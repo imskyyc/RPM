@@ -152,7 +152,6 @@ Server.Load = function()
 
     --// Load packages & dependencies to server and client
 
-
     print("RPM Framework successfully loaded.")
 end
 
