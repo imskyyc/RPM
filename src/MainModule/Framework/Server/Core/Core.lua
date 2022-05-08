@@ -42,8 +42,6 @@ local self; self = Core.new("Core", {
         warn  = Environment.warn
         error = Environment.error
         debug = Environment.debug
-
-        --// TODO: HTTP stuff, will come in later update
     end
 })
 
